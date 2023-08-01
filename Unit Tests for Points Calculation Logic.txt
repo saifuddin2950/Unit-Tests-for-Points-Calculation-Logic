@@ -1,0 +1,36 @@
+package com.example.rewards program.core;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class PointsCalculatorTest {
+    private final PointsCalculator pointsCalculator = new PointsCalculator();
+
+    @Test
+    public void testCalculatePoints_NoPoints() {
+        assertEquals(0, pointsCalculator.calculatePoints(0));
+    }
+
+    @Test
+    public void testCalculatePoints_LessThan50() {
+        assertEquals(0, pointsCalculator.calculatePoints(49));
+    }
+
+    @Test
+    public void testCalculatePoints_50() {
+        assertEquals(0, pointsCalculator.calculatePoints(50));
+    }
+
+    @Test
+    public void testCalculatePoints_Between50And100() {
+        assertEquals(1, pointsCalculator.calculatePoints(51));
+        assertEquals(50, pointsCalculator.calculatePoints(100));
+    }
+
+    @Test
+    public void testCalculatePoints_MoreThan100() {
+        assertEquals(90, pointsCalculator.calculatePoints(120));
+        assertEquals(350, pointsCalculator.calculatePoints(200));
+    }
+}
